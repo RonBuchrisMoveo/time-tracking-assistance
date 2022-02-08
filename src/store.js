@@ -1,10 +1,9 @@
 import { createSlice, configureStore, createAsyncThunk } from "@reduxjs/toolkit";
 import {BoardService} from './service/BoardService'
 
-
 export const initialState = {
     user: null,
-    board:null
+    board:null,
 }
 
 export const setUser = createAsyncThunk('data/setUser',async ()=>{
@@ -13,7 +12,6 @@ export const setUser = createAsyncThunk('data/setUser',async ()=>{
 })
 export const setBoard = createAsyncThunk('data/setBoard',async ()=>{
     const data = await  BoardService.getBoard()
-    console.log('data', data);
     return data
 })
 
@@ -28,7 +26,7 @@ export const dataSlice = createSlice({
             state.user=action.payload
         })
         .addCase(setBoard.fulfilled, (state, action)=>{
-            // state.board=action.payload
+            state.board=action.payload
         })
     }
 })
