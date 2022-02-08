@@ -13,7 +13,7 @@ export const setUser = createAsyncThunk('data/setUser',async ()=>{
 })
 export const setBoard = createAsyncThunk('data/setBoard',async ()=>{
     const data = await  BoardService.getBoard()
-    // console.log('data', data);
+    console.log('data', data);
     return data
 })
 

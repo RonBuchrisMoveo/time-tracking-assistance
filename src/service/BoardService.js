@@ -20,8 +20,8 @@ async function getUser(){
     }
 }
 async function getBoard(){
+    let board;
     try{
-        const board=[]
         let query = 'query { boards (ids: 2257151977) { name state board_folder_id items { id name column_values {title text } } }}'
         await fetch ("https://api.monday.com/v2", {
             method: 'post',
@@ -36,8 +36,7 @@ async function getBoard(){
         .then(res => {
             board = res.data.boards[0]
         });
-        console.log('b1', board);
-            // return board
+            return board
 
     }catch(err){
         throw err
