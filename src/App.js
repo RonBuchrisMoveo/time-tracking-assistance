@@ -1,36 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import mondaySdk from "monday-sdk-js";
 import "monday-ui-react-core/dist/main.css"
 //Explore more Monday React Components here: https://style.monday.com/
 import AttentionBox from "monday-ui-react-core/dist/AttentionBox.js"
+import { Main } from "./cmps/Main";
 
 const monday = mondaySdk();
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+export const App=()=> {
+const [meta, setMeta] = useState({});
+monday.setToken('eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjE0NDUxNTIwNiwidWlkIjoyNjUwNjUxMSwiaWFkIjoiMjAyMi0wMi0wNlQxMzoxODoxMS4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTEwMjMyOCwicmduIjoidXNlMSJ9.hBfGTpbOc86DGGbGcmmMD9gIg1P90Y8gvpgIGseWn5E')
 
-    // Default state
-    this.state = {
-      settings: {},
-      name: "",
-    };
-  }
+useEffect(() => {
+  monday.get("context").then((res) => {
+    setMeta(res.data);
+  });
+}, []);
 
-  componentDidMount() {
-    // TODO: set up event listeners
-  }
-
-  render() {
-    return <div className="App">
-      <AttentionBox
-        title="MIKELLLLLLLLLLL"
-        text="Let's start building your amazing app, which will change the world!"
-        type="success"
-      />
-    </div>;
-  }
+  return (
+    <div className="App">
+      <Main monday={monday} meta={meta}/>
+    </div>
+  )
 }
 
-export default App;
+// export default App;
