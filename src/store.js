@@ -14,6 +14,10 @@ export const setBoard = createAsyncThunk('data/setBoard',async ()=>{
     const data = await  BoardService.getBoard()
     return data
 })
+export const setBoards = createAsyncThunk('data/setBoardsId',async ()=>{
+    const data = await  BoardService.getBoards()
+    return data
+})
 
 export const dataSlice = createSlice({
     name: 'data',
@@ -26,6 +30,9 @@ export const dataSlice = createSlice({
             state.user=action.payload
         })
         .addCase(setBoard.fulfilled, (state, action)=>{
+            state.board=action.payload
+        })
+        .addCase(setBoards.fulfilled, (state, action)=>{
             state.board=action.payload
         })
     }

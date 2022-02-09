@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setBoard, setUser } from '../store';
+import { setBoard, setBoards, setUser } from '../store';
 import { ItemList } from './ItemList';
-
 export const Main = () => {
     const dispatch = useDispatch()
     const {user,board} = useSelector(state=> state.data)
@@ -15,7 +14,7 @@ export const Main = () => {
 
 if(!board) return <div></div>
   return (
-  <div>
+  <div className='main-container'>
       {board.name}
       <div className='users-container'>
           {board.items.map(item=>(

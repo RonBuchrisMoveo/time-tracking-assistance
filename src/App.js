@@ -11,14 +11,7 @@ const monday = mondaySdk();
 
 
 export const App=()=> {
-const [meta, setMeta] = useState({});
-monday.setToken('eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjE0NDUxNTIwNiwidWlkIjoyNjUwNjUxMSwiaWFkIjoiMjAyMi0wMi0wNlQxMzoxODoxMS4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTEwMjMyOCwicmduIjoidXNlMSJ9.hBfGTpbOc86DGGbGcmmMD9gIg1P90Y8gvpgIGseWn5E')
 
-useEffect(() => {
-  monday.get("context").then((res) => {
-    setMeta(res.data);
-  });
-}, []);
 
   return (
     <Provider store={store}>
