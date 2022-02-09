@@ -35,7 +35,11 @@ async function getUser(){
             costPerHour:0,
             months:0,
             hours:0,
+            value:'',
+            label:''
          }
+        user.value = item.name
+        user.label = item.name
         user.userName = item.name
         item.column_values.map(value=>{
             if(months.includes(value.title)){
