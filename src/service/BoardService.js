@@ -51,6 +51,7 @@ async function getUser(){
           })
           users.push(user)
     })
+    console.log('users', users);
       return users
 }
 async function getBoards(){
