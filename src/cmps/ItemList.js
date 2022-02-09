@@ -1,35 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setUsers } from '../store';
 
-export const ItemList = ({item}) => {
-  console.log('item', item);
-  const values = item.column_values
-  let status;
-  let CostPerHour;
-  let counter = 0
-  let hours = 0
-  const months = ['January','February','March','April','May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+export const ItemList = ({user}) => {
+  const dispatch = useDispatch()
   return (
   <div className='item-container'>
-    {values.map(value=>{
-      if(months.includes(value.title)){
-      if(value.text !==''){
-        const hoursPerMonth = JSON.parse(value.text)
-        counter++
-        hours+=hoursPerMonth
-      }
-    }
-    if(value.title==='Status') status=value.text
-    if(value.title==='Hourly Rate') CostPerHour=value.text
-  })
-}
-<div>name:  {item.name}</div>
-<div>status:  {status}</div>
-<div>months counter:  {counter}</div>
-<div>hrs:  {hours}</div>
-<div>avg cost per month:  {(hours/counter)*CostPerHour} ₪</div>
-<div>predicted annual cost:  {((hours/counter)*12)*CostPerHour} ₪</div>
+<div>name:  {user.userName}</div>
+<div>status:  {user.status}</div>
+<div>months counter:  {user.months}</div>
+<div>hrs:  {user.hours}</div>
+<div>avg cost per month:  {(user.hours/user.months)*user.costPerHour} ₪</div>
+<div>predicted annual cost:  {((user.hours/user.months)*12)*user.costPerHour} ₪</div>
 <div>~~~~~~~~~~~~~~~~~~~~~~~~~~~~</div>
-
   </div>
   )
 };
