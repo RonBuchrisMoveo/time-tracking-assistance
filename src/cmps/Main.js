@@ -14,6 +14,8 @@ export const Main = () => {
 if(!users) return <div></div>
   return (
   <div className='main-container'>
+      <div className='search-bar'></div>
+      <div className='charts'></div>
       <div className='users-container'>
           {users.map((user,idx)=>{
              return <ItemList key={idx} user={user}/>
