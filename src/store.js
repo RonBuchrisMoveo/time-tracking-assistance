@@ -4,16 +4,14 @@ import {BoardService} from './service/BoardService'
 export const initialState = {
     user: null,
     users:null,
+    filterUsers: null
 }
 
 export const setUser = createAsyncThunk('data/setUser',async ()=>{
     const data = await  BoardService.getUser()
     return data
 })
-// export const setUsers = createAsyncThunk('data/setUser',async ()=>{
-//     const data = await  BoardService.getUser()
-//     return data
-// })
+
 export const setBoard = createAsyncThunk('data/setBoard',async ()=>{
     const data = await  BoardService.getBoard()
     return data
@@ -23,12 +21,13 @@ export const setBoards = createAsyncThunk('data/setBoardsId',async ()=>{
     return data
 })
 
+
 export const dataSlice = createSlice({
     name: 'data',
     initialState,
     reducers: {
-        setUsers:(state,action)=>{
-            state.users = action.payload
+        setFilterUsers:(state,action)=>{
+            state.filterUsers = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -51,9 +50,6 @@ const store = configureStore({
     }
 })
 
-// type RootState = ReturnType<typeof store.getState>
-
-// export const selectCar = (state: RootState) => state.data
-export const {setUsers} = dataSlice.actions
+export const {setFilterUsers} = dataSlice.actions
 
 export default store

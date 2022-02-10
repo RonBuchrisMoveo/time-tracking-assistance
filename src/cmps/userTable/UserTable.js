@@ -7,11 +7,13 @@ import {
   PredictedParameters,
   EmployeeList,
   EmployeesListContainter,
+  StatusParameter
 } from "./style";
 import { useDispatch, useSelector } from "react-redux";
 
 export const UserTable = () => {
-  const { users } = useSelector((state) => state.data);
+  const { users, filterUsers } = useSelector((state) => state.data);
+  const listItems = filterUsers?.length ? filterUsers : users;
 
   return (
     <UserTableContainer>
@@ -24,11 +26,11 @@ export const UserTable = () => {
         <PredictedParameters>Predicted Annual Cost</PredictedParameters>
       </TitleList>
       <EmployeesListContainter>
-        {users.map((user) => {
+        { listItems.map((user) => {
           return (
             <EmployeeList>
               <EmployeeName>{user.userName}</EmployeeName>
-              <CurrentParameters>{user.status}</CurrentParameters>
+              <StatusParameter isActive={user.status === 'Active'}>{user.status}</StatusParameter>
               <CurrentParameters>{user.months}</CurrentParameters>
               <CurrentParameters>{user.hours}</CurrentParameters>
               <PredictedParameters>

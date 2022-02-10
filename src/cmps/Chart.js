@@ -1,22 +1,23 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
+import { useSelector } from 'react-redux';
 
 const [green, red] = ['#258750','#b83a52'];
 
-export const UsersChart = ({ users }) => {
-    console.log('UserChart Mount');
-
+export const UsersChart = () => {
+    const { users, filterUsers } = useSelector((state) => state.data);
+    const listItems = filterUsers?.length ? filterUsers : users;
     const [names,setNames] = useState();
     const [hours, setHours] = useState();
     const [colors, setColors] = useState();
 
-    const getNames = () => {
+    const syncData = () => {
         const currNames = [];
         const usersHours = [];
         const activeColors = [];
 
-        users.map((usr) => {
+        listItems.map((usr) => {
             activeColors.push(usr.status === 'Active' ?  green: red);
             currNames.push(usr.userName);
             usersHours.push(usr.hours);
@@ -27,7 +28,7 @@ export const UsersChart = ({ users }) => {
         setColors(activeColors);
     }
 
-    useEffect(() => getNames(), []);
+    useEffect(() => syncData(), [listItems]);
 
     const data = {
         labels: names,
@@ -52,5 +53,6 @@ export const UsersChart = ({ users }) => {
             title: { display: true, text: 'Annual Hours' },
         },
     };
+    console.log(names)
     return names ? <Bar data={data} options={options} /> : <React.Fragment></React.Fragment>
 }
