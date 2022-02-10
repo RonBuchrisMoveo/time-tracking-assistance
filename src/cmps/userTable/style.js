@@ -10,8 +10,6 @@ export const UserTableContainer = styled.div`
   max-width: 1000px;
   min-width: 1000px;
   max-height: 300px;
-  min-height: 300px;
-
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   overflow: hidden;
   overflow-y: scroll;
@@ -45,6 +43,13 @@ export const CurrentParameters = styled.div`
   align-items: flex-start;
   min-width: 90px;
   max-width: 90px;
+`;
+export const StatusParameter =styled.div<{isActive}>`
+  display: flex;
+  align-items: flex-start;
+  min-width: 90px;
+  max-width: 90px;
+  color: ${(props) => props.isActive ? 'green' : 'red'};
 `;
 
 export const PredictedParameters = styled.div`

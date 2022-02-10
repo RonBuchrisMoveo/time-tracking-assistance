@@ -5,6 +5,9 @@ import { ItemList } from './ItemList';
 import { UserTable } from './userTable/UserTable';
 import { UsersChart } from './Chart';
 import { SearchBar } from './SearchBar';
+import { TotalAnnualCost } from './totalCost/TotalAnnualCost';
+import { Row, DataContainer, TotalCost, Header, MainContainer,ChartContainer } from './style';
+import { TotalMonthlyCost } from './totalCost/TotalMonthlyCost';
 
 export const Main = () => {
     const dispatch = useDispatch()
@@ -17,16 +20,24 @@ export const Main = () => {
     
 if(!users) return <div></div>
   return (
-  <div className='main-container'>
-      <div className='search-bar'><SearchBar users={users}/></div>
-      <div className='charts'><UsersChart users={users}/></div>
-      {/* <div className='users-container'>
-          {users.map((user,idx)=>{
-             return <ItemList key={idx} user={user}/>
-          })
-          }
-      </div> */}
-      <UserTable/>
-      </div>
+  <MainContainer>
+      <Header>
+           <SearchBar users={users}/>
+      </Header>
+      <DataContainer>
+          <Row>
+            <ChartContainer>
+                <UsersChart users={users}/>
+            </ChartContainer>
+            <TotalCost>
+                <TotalAnnualCost />
+                <TotalMonthlyCost />
+            </TotalCost> 
+          </Row>
+            <div>
+                <UserTable/>
+            </div>
+      </DataContainer>
+      </MainContainer>
       )
 };
