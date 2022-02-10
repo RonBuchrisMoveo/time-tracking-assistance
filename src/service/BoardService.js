@@ -4,7 +4,6 @@ const monday = mondaySdk();
 export const BoardService={
     getUser,
     getBoard,
-    getBoards,
     addUsersData
 }
 
@@ -55,17 +54,7 @@ async function getUser(){
           })
           users.push(user)
     })
-    console.log('users', users);
       return users
-}
-async function getBoards(){
-    try{
-        const { data } = await monday.api(`{ boards {name id} }`);
-        console.log('data', data);
-        //   return data.me
-    }catch(err){
-        throw err
-    }
 }
 
 async function getBoard(){

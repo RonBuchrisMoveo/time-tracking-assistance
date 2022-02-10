@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+const [green, red] = ['#258750','#b83a52'];
 export const UserTableContainer = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -44,12 +44,12 @@ export const CurrentParameters = styled.div`
   min-width: 90px;
   max-width: 90px;
 `;
-export const StatusParameter =styled.div<{isActive}>`
+export const StatusParameter =styled.div`
   display: flex;
   align-items: flex-start;
   min-width: 90px;
   max-width: 90px;
-  color: ${(props) => props.isActive ? 'green' : 'red'};
+  color: ${(props) => props.IsActive ? green : red};
 `;
 
 export const PredictedParameters = styled.div`
@@ -57,6 +57,9 @@ export const PredictedParameters = styled.div`
   align-items: flex-start;
   min-width: 180px;
   max-width: 180px;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
 `;
 
 export const EmployeeList = styled.div`

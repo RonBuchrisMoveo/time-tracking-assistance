@@ -53,6 +53,5 @@ export const UsersChart = () => {
             title: { display: true, text: 'Annual Hours' },
         },
     };
-    console.log(names)
     return names ? <Bar data={data} options={options} /> : <React.Fragment></React.Fragment>
 }

@@ -19,7 +19,7 @@ export const TotalAnnualCost = () => {
   return (
     <TotalCostContainer>
       <Title>TOTAL ANUUAL COSTS</Title>
-      <Price> $ {totalCost.toLocaleString()} </Price>
+      <Price>{totalCost.toLocaleString()} ₪</Price>
     </TotalCostContainer>
   );
 };

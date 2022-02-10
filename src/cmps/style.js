@@ -10,7 +10,6 @@ export const MainContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 40px;
-    width: 80%;
 `
 export const ChartContainer = styled.div`
     height: 300px;

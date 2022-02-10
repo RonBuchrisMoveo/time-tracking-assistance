@@ -30,14 +30,14 @@ export const UserTable = () => {
           return (
             <EmployeeList>
               <EmployeeName>{user.userName}</EmployeeName>
-              <StatusParameter isActive={user.status === 'Active'}>{user.status}</StatusParameter>
+              <StatusParameter IsActive={user.status === 'Active'}>{user.status}</StatusParameter>
               <CurrentParameters>{user.months}</CurrentParameters>
               <CurrentParameters>{user.hours}</CurrentParameters>
               <PredictedParameters>
-                {(user.hours / user.months) * user.costPerHour} ₪
+                {((user.hours / user.months) * user.costPerHour).toLocaleString()} ₪
               </PredictedParameters>
               <PredictedParameters>
-                {(user.hours / user.months) * 12 * user.costPerHour} ₪
+                {((user.hours / user.months) * 12 * user.costPerHour).toLocaleString()} ₪
               </PredictedParameters>
             </EmployeeList>
           );
